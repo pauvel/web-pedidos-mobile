@@ -1,0 +1,50 @@
+{{>nav}}
+<!-- Inicio del cuerpo -->
+<section class="cuerpo">
+     <div class="cuerpo-contenido">
+        <div class="caja-contenido-small">
+            <div class="cuerpo-titulo">
+                <h1>Mis productos</h1>
+            </div>
+            <div class="contenido">
+                <img class="image-fit" src="/img/product-section/inventory.png">
+                <p>
+                    Edita, agrega y elimina un producto.
+                </p>
+                <a href="/products/show/products/?category={{lastCategory}}" class="green-button">
+                    Ir
+                </a>
+            </div>
+        </div>
+        <div class="caja-contenido-small">
+            <div class="cuerpo-titulo">
+                <h1>Mis categorias</h1>
+            </div>
+            <div class="contenido">
+                <img class="image-fit" src="/img/product-section/delivery-box.png">
+                <p>
+                    Edita, agrega y elimina categorias de tus productos.
+                </p>
+                <a href="/products/categories" class="green-button" >
+                    Ir
+                </a>
+            </div>
+        </div>
+        <div class="caja-contenido-small">
+            <div class="cuerpo-titulo">
+                <h1>Mis Ingredientes</h1>
+            </div>
+            <div class="contenido">
+                <img class="image-fit" src="/img/product-section/ingredients.svg">
+                <p>
+                    Edita, agrega y elimina ingredientes para tus productos.
+                </p>
+                <a href="/products/ingredients" class="green-button" >
+                    Ir
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="/js/dashboardEvents.js"></script>
+<!-- Fin del cuerpo -->

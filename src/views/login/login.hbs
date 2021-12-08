@@ -1,0 +1,14 @@
+    <div class="login-box">
+        {{!-- <img src="./assets/img/logo.png"> --}}
+        <h1>Acceso al sistema</h1>
+        <hr>
+        <img src="/img/login-section/login-logo.svg" alt="" class="image-fit">
+        <form action="/home/welcome" method="POST">
+            <input type="text" name="txtusuario" id="txtusuario" maxlength="15" value="" placeholder="Nombre de usuario" required >
+            <input type="password" name="txtpassword" maxlength="10" id="txtpassword" placeholder="Contraseña" required>
+            <button id="btnacceder">Acceder</button>
+            <div class="{{class}}">
+                {{action}}
+            </div>
+        </form>
+    </div>

@@ -1,0 +1,47 @@
+{{>nav}}
+<link rel="stylesheet" href="/css/table-styles.css">
+<link rel="stylesheet" href="/css/popup.css">
+<!-- Inicio del cuerpo -->
+<section class="cuerpo">
+    <div class="cuerpo-titulo">
+        <h1>
+            <i class="fas fa-info-circle"></i>  Categorias
+        </h1>
+    </div>
+     <div class="cuerpo-contenido">
+        <div class="caja-contenido-small">
+            <img src="/img/category-section/add-new.png" alt="" class="image-fit">
+            <h1 class="titulo-1">Editar: "{{category.name}}"</h1>
+            <hr>
+            <div class="contenido">
+                <h1>Modificar?</h1>
+                <div class="caja-texto texto-plano">
+                    <p class="texto-plano">Esta a punto de modificar una categoria ala cual sus clientes estan acostumbrados a ver, esta seguro que desea continuar?</p>
+                </div>
+                <a id="add-button" class="green-button action-btn-form"> Si </a>
+                <a href="/products/categories" class="red-button action-btn-form"> No </a>
+            </div>
+        </div> 
+    </div>
+</section>
+{{!-- popup AGREGAR NUEVA --}}
+    <div class="overlay" id="overlay">
+        <div class="popup" id="popup">
+            <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
+            <img src="/img/category-section/caution.png" alt="" class="image-fit">
+            <h3>Introduzca el nuevo nombre de la categoria</h3>
+            <p>Sus clientes podran ver los cambios una vez reinicien la aplicacion.</p>
+            <hr>
+            <div class="contenido">
+                <form action="/products/categories/edit/category" method="post">
+                    <input type="hidden" name="txtid" value="{{category.id}}">
+                    <input class="input-tobox" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+[a-zA-Z0-9]+[a-zA-Z0-9 ]" type="text" name="txtcategory" id="txtcategory" maxlength="18" minlength="4" placeholder="Nuevo nombre" required>
+                    <button  class="green-button"> Finalizar </button>
+                </form>
+            </div>
+        </div>
+    </div>
+{{!-- FIN popup AGREGAR NUEVA--}}
+<script src="/js/dashboardEvents.js"></script>
+<script src="/js/popup.js"></script>
+<!-- Fin del cuerpo -->

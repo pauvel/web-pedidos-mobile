@@ -1,0 +1,57 @@
+{{>nav}}
+<link rel="stylesheet" href="/css/table-styles.css">
+<link rel="stylesheet" href="/css/products.css">
+
+<!-- Inicio del cuerpo -->
+<section class="cuerpo">
+    <div class="cuerpo-contenido">
+        <div class="caja-contenido-small">
+                <div class="titulo-1">
+                    {{productData.name}}
+                </div>
+            <img src="{{productData.url}}" alt="" class="image-product">
+            <select name="cboxingredients" id="cboxingredients">
+                {{#each actualIngredients}}
+                    <option value="{{id}}">{{nombre}}</option>
+                {{/each}}
+            </select>
+            <div id="add-ingredient-button" class="edit-button">Agregar</div>
+            <div class="contenido">
+                <div class="div-overflowed">
+                    <table class="table-normal">
+                        <th id="id-head">#</th>
+                        <th><i class="fas fa-boxes"></i> Ingrediente</th>
+                        <th><i class="fas fa-wrench"></i> Opciones</th>
+                        {{#each ingredients}}
+                            <tr>
+                                <td id="id-field">
+                                    {{id}}
+                                </td>
+                                <td>
+                                    {{nombre}}
+                                </td>
+                                <td>
+                                    {{!-- Eliminar --}}
+                                        <a href="/products/quit/ingredient_to_product?productId={{../productData.id}}&ingredientId={{id}}&ingredientName={{nombre}}&urlToProduct={{../product_complete_url}}" class="delete-button">
+                                            <i class="far fa-trash-alt"></i>
+                                            Eliminar
+                                        </a>
+                                    {{!-- Eliminarl --}}
+                                </td>
+                            </tr>
+                        {{else}}
+                            <p>
+                               <h1>Sin ingredientes!</h1>
+                            </p>
+                        {{/each}}
+                    </table>
+                </div>
+            </div>
+        </div> 
+    </div>
+</section>
+<input type="text" style="display: none;" value="{{productData.id}}" id="productId">
+<input type="text" style="display: none;" value="{{product_complete_url}}" id="productCompleteUrl">
+
+<script src="/js/dashboardEvents.js"></script>
+<script type="module" src="/js/products-ingredients.js"></script>

@@ -1,0 +1,43 @@
+{{>nav}}
+<link rel="stylesheet" href="/css/table-styles.css">
+<link rel="stylesheet" href="/css/popup.css">
+<!-- Inicio del cuerpo -->
+<section class="cuerpo">
+     <div class="cuerpo-contenido">
+        <div class="caja-contenido-small">
+            <img src="/img/category-section/add-new.png" alt="" class="image-fit">
+            <h1 class="titulo-1">Eliminar: "{{ingrediente.name}}"</h1>
+            <hr>
+            <div class="contenido">
+                <h1>¿Eliminar?</h1>
+                <div class="caja-texto texto-plano">
+                    <p class="texto-plano">¿Esta usted seguro de eliminar este ingrediente del producto?</p>
+                </div>
+                <a id="add-button" class="green-button action-btn-form"> Si </a>
+                <a href="{{urlToProduct}}" class="red-button action-btn-form"> No </a>
+            </div>
+        </div> 
+    </div>
+</section>
+{{!-- popup ELIMINAR --}}
+    <div class="overlay" id="overlay">
+        <div class="popup" id="popup">
+            <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
+            <img src="/img/category-section/caution.png" alt="" class="image-fit">
+            <h3>Presione eliminar para continuar</h3>
+            <p>Sus clientes podran ver los cambios a la brevedad.</p>
+            <hr>
+            <div class="contenido">
+                <form action="/products/quit/ingredient_to_product/?_method=DELETE" method="post">
+                    <input type="hidden" name="ingredientId" value="{{ingrediente.id}}">
+                    <input type="hidden" name="productId" value="{{ingrediente.producto}}">
+                    <input type="hidden" name="url" value="{{urlToProduct}}">
+                    <button  class="red-button"> Eliminar </button>
+                </form>
+            </div>
+        </div>
+    </div>
+{{!-- FIN popup ELIMINAR--}}
+<script src="/js/dashboardEvents.js"></script>
+<script src="/js/popup.js"></script>
+<!-- Fin del cuerpo -->

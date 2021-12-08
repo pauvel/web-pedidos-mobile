@@ -1,0 +1,43 @@
+{{>nav}}
+<link rel="stylesheet" href="/css/table-styles.css">
+<link rel="stylesheet" href="/css/popup.css">
+
+<!-- Inicio del cuerpo -->
+<section class="cuerpo">
+     <div class="cuerpo-contenido">
+        <div class="caja-contenido-small">
+            <img src="/img/category-section/add-new.png" alt="" class="image-fit">
+            <h1 class="titulo-1">Editar: "{{ingredient.name}}"</h1>
+            <hr>
+            <div class="contenido">
+                <h1>¿Modificar?</h1>
+                <div class="caja-texto texto-plano">
+                    <p class="texto-plano">Esta a punto de modificar un ingrediente al cual sus clientes estan acostumbrados a ver. ¿Esta seguro que desea continuar?</p>
+                </div>
+                <a id="add-button" class="green-button action-btn-form"> Si </a>
+                <a href="/products/ingredients" class="red-button action-btn-form"> No </a>
+            </div>
+        </div> 
+    </div>
+</section>
+
+{{!-- popup  --}}
+    <div class="overlay" id="overlay">
+        <div class="popup" id="popup">
+            <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
+            <img src="/img/category-section/caution.png" alt="" class="image-fit">
+            <h3>Introduzca el nuevo nombre de su ingrediente</h3>
+            <p>Sus clientes podran ver los cambios en brevedad.</p>
+            <hr>
+            <div class="contenido">
+                <form action="/products/ingredients/edit/{{ingredient.id}}?_method=PUT" method="post">
+                    <input class="input-tobox" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+[a-zA-Z0-9]+[a-zA-Z0-9 ]" type="text" name="ingredient" id="ingredient" maxlength="18" minlength="4" placeholder="Nuevo nombre" required>
+                    <button  class="green-button"> Finalizar </button>
+                </form>
+            </div>
+        </div>
+    </div>
+{{!-- FIN popup --}}
+<script src="/js/dashboardEvents.js"></script>
+<script src="/js/popup.js"></script>
+<!-- Fin del cuerpo -->

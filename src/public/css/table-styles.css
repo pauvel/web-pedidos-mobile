@@ -1,0 +1,103 @@
+.table-normal{
+    border: .5px solid rgba(71, 70, 70, 0.699);
+    width: 100%;
+    padding: 20px;
+    border-collapse: collapse;
+}
+
+.table-normal th {
+    border: 1px solid #dddddd;
+    width: min-content;
+    /* border: .5px solid rgba(71, 70, 70, 0.699); */
+    text-align: left;
+    padding-right: 25px;
+    padding-left: 5px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    background: rgba(44, 223, 8, 0.582);
+    color: rgba(0, 0, 0, 0.616);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: x-large;
+}
+
+tr:nth-child(even) {
+    background-color: rgba(194, 93, 34, 0.712);
+}
+
+.table-normal td {
+    border: 1px solid #dddddd;
+    font-weight: 400;
+    background: rgba(113, 7, 211, 0.377);
+    text-align: left;
+    padding: .4em;
+    width: min-content;
+    /* border: .1px solid rgb(156, 94, 0); */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: larger;
+}
+
+.edit-button{
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    padding: 7px 16px;
+    max-height: 3em;
+    font-size: 100%;
+    color: white;
+    background: #008000;
+    font-family: Arial, Helvetica, sans-serif;
+    border: none;
+    border-radius: 5px;
+    font-weight: lighter;
+    cursor: pointer;
+}
+
+.delete-button{
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: lighter;
+    padding: 7px 16px;
+    max-height: 3em;
+    font-size: 100%;
+    color: white;
+    background: #800000;
+    font-family: Arial, Helvetica, sans-serif;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-button:hover {
+    background: #75080ea4;
+}
+
+.edit-button:active {
+    background: #d4c2c8f5;
+}
+
+.delete-button:hover {
+    background: #75080ea4;
+}
+
+.delete-button:active {
+    background: #d4c2c8f5;
+}
+.div-overflowed{
+    overflow: auto;
+    height: 20em;
+    padding: 15px;
+}
+
+.action-btn-form {
+    display: inline-block;
+    text-align: center;
+}
+
+#id-field {
+    display: none;
+}
+
+#id-head {
+    display: none;
+}

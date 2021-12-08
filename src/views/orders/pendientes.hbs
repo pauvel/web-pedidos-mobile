@@ -1,0 +1,42 @@
+{{>nav}}
+
+<link rel="stylesheet" href="/css/orders.css">
+<link rel="stylesheet" href="/css/table-styles.css">
+
+<!-- Inicio del cuerpo -->
+<section class="cuerpo">
+    <div class="cuerpo-contenido">
+        <div class="titulo-1">Pendientes</div>
+        <img src="/img/orders-section/alarm.svg" class="image-fit">
+        <div class="orders-box">
+            {{#each orders}}
+                <div class="order">
+                    <div class="order-title"> Pedido #{{id}} </div>
+                    <i>{{dateFormat fecha}}  {{hora}}</i>
+                    <div class="line-detail-center">
+                        <i>{{timeago fecha}}</i>
+                    </div>
+                    <hr>
+                    <p>
+                        <div class="line-detail">
+                            <b>Tipo: </b>{{entrega}}
+                        </div>
+                        <div class="line-detail">
+                            <b>Cliente: </b>{{cliente}}
+                        </div>
+                        <div class="line-detail">
+                            <b>Telefono: </b>{{telefono}}
+                        </div>
+                        <div class="line-detail-center">
+                            <a href="/pedidos/pendientes/{{id}}/details?client={{telefono}}" class="blue-button"><i class="fas fa-info-circle"></i> Detalles</a>
+                        </div>
+                    </p>
+                </div>
+                {{else}}
+                <div class="titulo-1">Sin pedidos pendientes.</div>
+            {{/each}}
+        </div>
+    </div>
+</section>
+
+<script src="/js/dashboardEvents.js"></script>

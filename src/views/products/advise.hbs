@@ -1,0 +1,35 @@
+{{>nav}}
+<!-- Inicio del cuerpo -->
+<section class="cuerpo">
+     <div class="cuerpo-contenido">
+        <div class="caja-contenido-small">
+            <div class="contenido">
+                <img src="/img/category-section/{{image}}" alt="" class="image-fit">
+                {{#if response}}
+                    <p>
+                        <h1>
+                            Enhorabuena!
+                        </h1> 
+                        <hr>
+                        <h3>
+                            {{category}}
+                        </h3> 
+                        {{description}}
+                    </p>
+                {{else}}
+                    <p>
+                        <h1>
+                            oOps!
+                        </h1>
+                        <hr>
+                        <h3>{{category}}</h3> 
+                        {{description}}
+                    </p>
+                {{/if}}
+                    <a class="green-button" href="{{actionUrl}}"> {{action}} </a>
+            </div>
+        </div> 
+    </div>
+</section>
+<script src="/js/dashboardEvents.js"></script>
+<!-- Fin del cuerpo -->

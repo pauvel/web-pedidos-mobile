@@ -1,0 +1,141 @@
+{{>nav}}
+
+<link rel="stylesheet" href="/css/order-details.css">
+<link rel="stylesheet" href="/css/table-styles.css">
+<link rel="stylesheet" href="/css/popup.css">
+
+<!-- Inicio del cuerpo -->
+<section class="cuerpo">
+    <div class="cuerpo-contenido">
+        {{!-- Detalles de cabecera --}}
+        <div class="head-details">
+            <div class="client-name">
+                <i class="fas fa-user-check fa-3x"></i>
+                <div class="order-title">Nombre del cliente</div>
+                <label class="info-order">
+                    {{order.cliente}}
+                </label>
+            </div>
+            <div class="order-status">
+                <i class="fas fa-clock fa-3x"></i>
+                <div class="order-title">Estado del pedido</div>
+                <label class="info-order">
+                    {{orderStatus order.estatus}}
+                </label>
+            </div>
+            <div class="order-date">
+                <i class="fas fa-calendar-day fa-3x"></i>
+                <div class="order-title">Fecha expedido</div>
+                <label class="info-order">
+                    {{dateFormat order.fecha}} - {{order.hora}}
+                </label>
+            </div>
+        </div>
+        {{!-- Fin detalles de cabecera --}}
+        {{!-- Contenido --}}
+        <div class="details-container">
+            {{!-- Left side info --}}
+                <div class="left-side">
+                    <div class="titulo-1">Informacion</div>
+                    <div class="details-box">
+                        <div class="comment-box">
+                            <p>
+                                <div class="order-title-left">Comentarios</div>
+                                {{order.comentario}}
+                            </p>
+                        </div>
+                        <div class="data-box">
+                            <div class="line-detail">
+                                <b>Tipo de pedido:</b> {{order.entrega}}
+                            </div>
+                            <div class="line-detail">
+                                <b>Telefono:</b> {{order.telefono}}
+                            </div>
+                            <div class="line-detail">
+                                <b>Ubicacion:</b> {{order.ubicacion}}
+                            </div>
+                            <div class="line-detail">
+                                <a id="localizationButton" class="blue-button">Ver ubicacion en mapa</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comment-box">
+                        <div class="order-title-left">Importe total: ${{order.importe}}</div>
+                        {{!-- <div class="line-detail">
+                            <a class="green-button">Aprobar</a>
+                        </div> --}}
+                        <form action="/pedidos/imprimir_ticket" target="_blank" method="post" class="set-inline">
+                            <input type="hidden" name="id" value="{{order.id}}">
+                            <input type="hidden" name="client" value="{{order.telefono}}">
+                            <button id="aprove-button" class="blue-button">Imprimir ticket</button>
+                        </form>
+                    </div>
+                </div>
+            {{!-- Fin de left side info --}}
+
+            {{!-- right side info --}}
+                <div class="right-side">
+                    <div class="titulo-1">Productos en el pedido</div>
+                    <div class="list-tile">
+                        {{#each order_products}}
+                            <div class="product">
+                                <img src="{{url}}" class="image-product" >
+                                <div class="order-title wx1">{{nombre}}</div>
+                                <div class="line-detail">
+                                    <b>Precio</b> <div class="line-detail">${{precio}}</div>
+                                    <b>Cantidad</b> <div class="line-detail">{{cantidad}}</div> 
+                                    <b>Importe</b><div class="line-detail">${{importe}}</div>
+                                </div>
+                                <div class="product">
+                                    <div class="line-detail">
+                                        {{#if ingredientes}}
+                                            <b>Este producto no debe contener:</b>
+                                            <div class="line-detail">{{ingredientes}}</div>
+                                        {{else}}
+                                            <div class="line-detail">CON TODO</div>
+                                        {{/if}}
+                                    </div>
+                                </div>
+                            </div>  
+                        {{/each}}
+                    </div>
+                </div>
+            {{!-- Fin de right side info --}}
+        </div>
+        {{!-- Fin contenido --}}
+    </div>        
+    <div style="height: 250px;"></div>
+</section>
+
+{{!-- Localizacion --}}
+    <div class="overlay" id="overlay">
+        <div class="popup" id="popup">
+            <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
+            <div class="contenido">
+                <iframe 
+                    width="600" 
+                    height="450" 
+                    frameborder="0" 
+                    scrolling="no" 
+                    marginheight="0" 
+                    marginwidth="0" 
+                    src="https://maps.google.com/maps?q={{getLat order.localizacion}},{{getLong order.localizacion}}&hl=es&z=14&amp;output=embed"
+                    >
+                </iframe>
+                    <br />
+                    <small>
+                    <a 
+                        class="blue-button"
+                        href="https://maps.google.com/maps?q={{getLat order.localizacion}},{{getLong order.localizacion}}&hl=es;z=14&amp;output=embed" 
+                        target="_blank"
+                    >
+                        Agrandar
+                    </a>
+                    </small>
+            </div>
+        </div>
+    </div>
+{{!-- FIN Localizacion--}}
+
+<script src="/js/dashboardEvents.js"></script>
+<script src="/js/popup-localization.js"></script>

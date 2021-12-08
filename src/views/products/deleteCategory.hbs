@@ -1,0 +1,47 @@
+{{>nav}}
+<link rel="stylesheet" href="/css/table-styles.css">
+<link rel="stylesheet" href="/css/popup.css">
+<!-- Inicio del cuerpo -->
+<section class="cuerpo">
+    <div class="cuerpo-titulo">
+        <h1>
+            <i class="fas fa-info-circle"></i>  Categorias
+        </h1>
+    </div>
+     <div class="cuerpo-contenido">
+        <div class="caja-contenido-small">
+            <img src="/img/category-section/add-new.png" alt="" class="image-fit">
+            <h1 class="titulo-1">Eliminar: "{{category.name}}"</h1>
+            <hr>
+            <div class="contenido">
+                <h1>Eliminar?</h1>
+                <div class="caja-texto texto-plano">
+                    <p class="texto-plano">Si elimina la categoria tambien eliminara los productos que pertenecen a ella, desea continuar?</p>
+                </div>
+                <a id="add-button" class="green-button action-btn-form"> Si </a>
+                <a href="/products/categories" class="red-button action-btn-form"> No </a>
+            </div>
+        </div> 
+    </div>
+</section>
+{{!-- popup ELIMINAR --}}
+    <div class="overlay" id="overlay">
+        <div class="popup" id="popup">
+            <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
+            <img src="/img/category-section/caution.png" alt="" class="image-fit">
+            <h3>Presione eliminar para continuar</h3>
+            <p>Sus clientes podran ver los cambios una vez reinicien la aplicacion.</p>
+            <hr>
+            <div class="contenido">
+                <form action="/products/categories/delete/" method="post">
+                    <input type="hidden" name="txtid" value="{{category.id}}">
+                    <input type="hidden" name="txtcategory" value="{{category.name}}">
+                    <button  class="red-button"> Eliminar </button>
+                </form>
+            </div>
+        </div>
+    </div>
+{{!-- FIN popup ELIMINAR--}}
+<script src="/js/dashboardEvents.js"></script>
+<script src="/js/popup.js"></script>
+<!-- Fin del cuerpo -->

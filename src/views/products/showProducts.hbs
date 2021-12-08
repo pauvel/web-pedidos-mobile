@@ -1,0 +1,111 @@
+{{>nav}}
+{{!-- {{>head}} --}}
+<link rel="stylesheet" href="/css/products.css">
+<link rel="stylesheet" href="/css/popup.css">
+<link rel="stylesheet" href="/css/table-styles.css">
+<!-- Inicio del cuerpo -->
+<section class="cuerpo">
+    <div class="cuerpo-titulo">
+        <h1>
+            <i class="fas fa-info-circle"></i> Mis productos
+        </h1>
+            <img src="/img/product-section/product.svg" alt="" class="image-fit">
+    </div>
+     <div class="cuerpo-contenido">
+        <div class="caja-contenido-small">
+            <div class="contenido">
+                {{!-- Inicio del searchBar --}}
+                <div class="search-bar">
+                    <label for="cboxcategory">Ordenar por </label>
+                    <select name="cboxcategory" id="cboxcategory">
+                        {{#each categories}}
+                            <option value="{{nombre}}">{{nombre}}</option>
+                        {{else}}
+                            <option value="none" disabled>Sin categorias</option>
+                        {{/each}}
+                    </select>
+                    <a id="order-button" class="edit-button">
+                        <i class="fas fa-sort-amount-down-alt"></i>
+                        Ordenar
+                    </a>
+                    <a class="add-button">
+                        <i class="fas fa-plus"></i>
+                        Nuevo 
+                    </a>
+                </div>
+                {{!-- Final del SearchBar --}}
+                <div id="categoryName" class="product-category-name product-box-titulo">
+                    {{isFor}}
+                </div>
+                {{!-- Inicio tabla de productos --}}
+                        {{#each products}}
+                            <div class="product-box">
+                                <div class="contenido">
+                                    <img src="{{url}}" alt="" class="image-product">
+                                    <div class="product-box-titulo">
+                                        <b>{{nombre}}</b>
+                                    </div>
+                                    <hr>
+                                    <p class="product-box-description">
+                                        {{descripcion}}
+                                    </p>
+                                    <a class="show-details-button" href="/products/edit/product/{{id}}">
+                                        Editar producto
+                                    </a>
+                                </div>
+                            </div>
+                        {{else}}
+                        <p id="no-products">
+                            <h1>
+                                No hay productos que mostrar!
+                            </h1>
+                        </p>
+                        {{/each}}
+                {{!-- Fin de la tabla de productos --}}
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{{!-- Inicio Popup: Agregar nuevo producto --}}
+    <div class="overlay" id="overlay">
+        <div class="popup" id="popup">
+            <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
+            <div class="titulo-2">Nuevo producto</div>
+            <p id="infoForm">Complete los campos correctamente, para poder agregar un producto al sistema en la categoria <b>{{isFor}}</b></p>
+            <hr>
+            <div class="contenido mar-lr-x10">
+                <form action="/products/add/product" method="POST">
+                    <p id="description-zone">
+                        <textarea class="input-tobox input-align-start" name="txtdescripcion" id="txtdescripcion" cols="30" rows="10" placeholder="Descripcion del producto" required minlength="10" maxlength="" /></textarea>
+                    </p>               
+                    <input class="input-tobox" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+[a-zA-Z0-9]+[a-zA-Z0-9 ]" type="text" name="txtnombre" id="txtnombre" maxlength="18" minlength="4" placeholder="Nombre del producto" required>
+                    <input class="input-tobox" type="number" name="txtprecio1" id="txtprecio1" maxlength="10" minlength="2" placeholder="Precio CH $0.00" required>
+                    <input class="input-tobox" type="number" name="txtprecio2" id="txtprecio2" maxlength="10" minlength="2" placeholder="Precio G $0.00" required>
+                    <input type="text" style="display: none;" value="No image" id="imageUrl" name="imageUrl">
+                    <input type="text" style="display: none;" value="{{currentCategoryId}}" id="categoria" name="categoria">
+                    <input type="text" style="display: none;" value="{{isFor}}" id="categoriaName" name="categoriaName">
+                    <div class="upload-image-section pad-x1">
+                        <input id="file-input" type="file" name="imagefromfile" style="display: none;" accept="image/png, image/jpeg, image/jpg">
+                        <img id="formImage" class="image-fit" type="image" src="/img/product-section/package.svg"  disabled>
+                        <a class="blue-button mar-d-x5" id="uploadFormImage">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            Subir imagen
+                        </a>
+                    </div>
+                    <button id="sendDataButton" class="green-button set-inline"> Registrar producto </button>
+                    <a id="continueFormButton" class="green-button set-inline">  
+                        <i class="fas fa-hand-point-right"></i>
+                        Continuar ... 
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+{{!-- Fin Popup: Agregar nuevo producto --}}
+
+<script src="/js/dashboardEvents.js"></script>
+<script src="/js/popup.js"></script>
+<script src="/js/product-section-events.js"></script>
+<!-- Fin del cuerpo -->

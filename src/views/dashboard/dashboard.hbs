@@ -1,0 +1,26 @@
+{{>nav}}
+<!-- Inicio del cuerpo -->
+<section class="cuerpo">
+    <div class="cuerpo-titulo">
+        <h1>
+            <i class="fas fa-info-circle"></i> Informacion
+        </h1>
+    </div>
+    <div class="cuerpo-contenido">
+        <div class="caja-contenido-small">
+            <p class="titulo-1">Bienvenido@!</p>
+            <div class="contenido">
+                <img src="/img/dashboard-section/profile.png" alt="" class="image-fit">
+                <p class="titulo-2">{{data.nombre_real}}</p>
+                <p>
+                    <div class="tira-info">
+                      <p>Ultimo acceso:  <i>{{timeago data.ultima_conexion}}</i>    </p> 
+                      <p>Nivel de usuario: <i>Administrador</i> </p> 
+                    </div>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="/js/dashboardEvents.js"></script>
+<!-- Fin del cuerpo -->

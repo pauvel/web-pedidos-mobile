@@ -1,0 +1,75 @@
+{{>nav}}
+<link rel="stylesheet" href="/css/table-styles.css">
+<link rel="stylesheet" href="/css/popup.css">
+<!-- Inicio del cuerpo -->
+<section class="cuerpo">
+    <div class="cuerpo-titulo">
+        <h1>
+            <i class="fas fa-info-circle"></i>  Categorias existentes
+        </h1>
+    </div>
+     <div class="cuerpo-contenido">
+        <div class="caja-contenido-small">
+            <img src="/img/category-section/add-new.png" alt="" class="image-fit">
+            <div class="contenido">
+                <div class="pad-x1">
+                    <a class="add-button">
+                        <i class="fas fa-plus"></i>
+                        Nueva
+                    </a>
+                </div>
+                <div class="div-overflowed">
+                    <table class="table-normal">
+                        <th id="id-head">#</th>
+                        <th><i class="fas fa-boxes"></i> Categoria</th>
+                        <th><i class="fas fa-wrench"></i> Opciones</th>
+                        {{#each categorias}}
+                            <tr>
+                                <td id="id-field">
+                                    {{id}}
+                                </td>
+                                <td>
+                                    {{nombre}}
+                                </td>
+                                <td>
+                                    <a href="/products/categories/edit/?id={{id}}&name={{nombre}}" class="edit-button">
+                                        <i class="far fa-edit"></i>
+                                        Editar
+                                    </a>
+                                    <a href="/products/categories/delete/?id={{id}}&name={{nombre}}" class="delete-button">
+                                        <i class="far fa-trash-alt"></i>
+                                        Eliminar
+                                    </a>
+                                </td>
+                            </tr>
+                        {{else}}
+                            <p>
+                                No hay categorias aun!
+                            </p>
+                        {{/each}}
+                    </table>
+                </div>
+            </div>
+        </div> 
+    </div>
+</section>
+{{!-- popup AGREGAR NUEVA --}}
+    <div class="overlay" id="overlay">
+        <div class="popup" id="popup">
+            <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
+            <img src="/img/category-section/add-new.png" alt="" class="image-fit">
+            <h3>Nueva categoria</h3>
+            <p>Agrega una nueva categoria de productos a tu aplicacion.</p>
+            <hr>
+            <div class="contenido">
+                <form action="/products/categories/add/new" method="post">
+                    <input class="input-tobox" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+[a-zA-Z0-9]+[a-zA-Z0-9 ]" type="text" name="txtcategory" id="txtcategory" maxlength="18" minlength="4" placeholder="Nombre de la categoria" required>
+                    <button  class="green-button"> Agregar </button>
+                </form>
+            </div>
+        </div>
+    </div>
+{{!-- FIN popup AGREGAR NUEVA--}}
+<script src="/js/dashboardEvents.js"></script>
+<script src="/js/popup.js"></script>
+<!-- Fin del cuerpo -->
